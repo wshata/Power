@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        Vue.component('blog-post',{
+            props:['post'],
+            template:'
+            <div class="blog-post">
+                <h3>{{post.title}}</h3>
+                <div v-html="post.content"></div>
+            </div>
+            '
+        })
+    </script>
+    <div id="components-demo">
+       <blog-post v-for = post in posts v-bind:post = post>
+       </blog-post>
+    </div>
+    <script>
+        new Vue({
+            el:'#components-demo',
+            data:{
+                posts:[
+                    {id:0,title:"a",content:"<p>aaa</p>"},
+                    {id:1,title:"b",content:"<p>bbb</p>"},
+                    {id:2,title:"c",content:"<p>ccc</p>"},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
