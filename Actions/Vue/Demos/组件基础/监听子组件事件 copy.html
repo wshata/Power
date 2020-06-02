@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        Vue.component('blog-post',{
+            props:['post'],
+            data:function(){
+                return {
+                    fontsize:1
+                }
+            }
+            template: `
+            <div class="blog-post">
+                <h3>{{post.title}}</h3>
+                <div v-html="post.content"></div>
+                <button v-on:click="$emit('enlarge_font',{{fontsize}})">Enlarge font</button>
+            </div>
+            `
+        })
+    </script>
+    <div id="components-demo">
+       <blog-post v-for ="post in posts" :post = "post" :style="{ fontSize: postFontSize + 'em' }" v-on:enlarge_font="postFontSize+=0.1"></blog-post>
+    </div>
+    <script>
+        new Vue({
+            el:'#components-demo',
+            data:{
+                postFontSize:1,
+                posts:[
+                    {id:0,title:"a",content:"<p>aaa</p>"},
+                    {id:1,title:"b",content:"<p>bbb</p>"},
+                    {id:2,title:"c",content:"<p>ccc</p>"},
+                ]
+            },
+            methods:{
+                enlarge:function(fontsize){
+                    this.
+                }
+            }
+        })
+    </script>
+</body>
+</html>
